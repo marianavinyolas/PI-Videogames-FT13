@@ -18,11 +18,25 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, Genre } = require('./src/db.js');
+
+
+
+const axios = require('axios').default;
+const { RAWG_GENRES } = require('./src/utils/urls');
+const { API_KEY } = process.env;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+  server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
+    let genres =  await axios.get(`${RAWG_GENRES}?key=${API_KEY}`);
+    genres = await genres.data.results.map(genre => Genre.create(
+      {
+        name: genre.name,
+        id: genre.id
+      }
+    ));
+    return genres;
   });
 });
