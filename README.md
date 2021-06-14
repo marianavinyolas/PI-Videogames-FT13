@@ -82,7 +82,7 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 - [ ] Express
 - [ ] Sequelize - Postgres
 
-#### Frontend
+## __Frontend__
 
 Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
 
@@ -119,7 +119,7 @@ __Ruta de creación de videojuegos__: debe contener
 - [ ] Posibilidad de seleccionar/agregar varias plataformas
 - [ ] Botón/Opción para crear un nuevo videojuego
 
-#### Base de datos
+## __Base de datos__
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
@@ -138,7 +138,7 @@ La relación entre ambas entidades debe ser de muchos a muchos ya que un videoju
 
 __IMPORTANTE__: Pensar como modelar los IDs de los videojuegos en la base de datos. Existen distintas formas correctas de hacerlo pero tener en cuenta que cuando hagamos click en algun videojuego, este puede provenir de la API o de la Base de Datos por lo que cuando muestre su detalle no debería haber ambigüedad en cual se debería mostrar. Por ejemplo si en la API el videojuego `Age of Empires II: Age of Kings` tiene id = 1 y en nuestra base de datos creamos un nuevo videojuego `Age of Henry` con id = 1, ver la forma de diferenciarlos cuando querramos acceder al detalle del mismo.
 
-#### Backend
+## __Backend__
 
 Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 

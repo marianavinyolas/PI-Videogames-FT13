@@ -9,13 +9,17 @@ const router = Router();
 // Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
 // Si no existe ningún videojuego mostrar un mensaje adecuado
 
+
 router.get('/', async (req, res) => {
   const {name} = req.query;
+  let game;
   if(name) {
     try {
-      const response = await axios.get(`${RAWG_GAMES}?key=${API_KEY}&search=${name}`)
-      response = response.slice(0,15);
-      return res.json(response.data.results);
+      game =  await axios.get(`${RAWG_GAMES}?key=${API_KEY}&search=${name}`)
+
+
+
+      return res.json(game.data.results);
     } catch (error) {
       if(error.response?.status === 404) {
         const game = Videogame.findAll();
@@ -34,11 +38,12 @@ router.get('/', async (req, res) => {
     apiGames = apiGames.map(game => ({
       name: game.name,
       description: game.description,
-      image: game.background_image,
+      background_image: game.background_image,
       released: game.released,
       rating: game.rating,
       platforms: game.platforms,
-      id: game.id
+      id: game.id,
+      genres: game.genres
     }))
     let dbGames = await Videogame.findAll();
     let totalGames = [...apiGames, ...dbGames]

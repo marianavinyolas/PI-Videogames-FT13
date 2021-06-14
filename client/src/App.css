@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -27,6 +28,10 @@
 .App-link {
   color: #61dafb;
 }
+
+/* div {
+  background-image: url('../src/img/spaceInvaders.jpg');
+} */
 
 @keyframes App-logo-spin {
   from {
