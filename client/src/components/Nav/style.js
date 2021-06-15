@@ -7,7 +7,9 @@ export const StyledDiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items:center;
-
+  .sort {
+    
+  }
   .links {
     display: flex;
     justify-content: space-around;

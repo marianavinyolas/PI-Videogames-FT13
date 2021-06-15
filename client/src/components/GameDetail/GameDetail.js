@@ -12,10 +12,10 @@ export const  GameDetail = ({match}) => {
 
   const dispatch = useDispatch();
   const game = useSelector(state => state.videogamesDetail);
-  
+  const id = match.params.id
   useEffect( () => {
-    dispatch(getVideogameDetail(match.params.id))
-  }, [dispatch]);
+    dispatch(getVideogameDetail(id))
+  }, [dispatch, id]);
 
   return (
     <StyledDiv>

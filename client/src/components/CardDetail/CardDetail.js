@@ -6,7 +6,7 @@ export const  CardDetail = (props) => {
     name,
     img,
     genres,
-    id,
+    // id,
   } = props;
 
   return (

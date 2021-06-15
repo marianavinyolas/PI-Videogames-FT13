@@ -3,6 +3,7 @@ import axios from 'axios';
 export const getAllVideogames = () => async (dispatch) => {
   try {
     const res = await axios.get ('http://localhost:3001/videogames/');
+    await res
     dispatch({ type: 'GET_VIDEOGAMES', payload: res.data});
   } catch (err) {
     console.log(`Error found:${err}`)
@@ -38,8 +39,51 @@ export const getGenre = (id) => async (dispatch) => {
   }
 };
 
-export const clearUser = () => {
-  return {
-    type: 'SET_VIDEOGAME_DETAIL', payload: undefined
-  }
+export const sortAz = () => (dispatch) => {
+    dispatch(
+      { 
+        type: 'SORT_AZ',
+        payload: 'AZ'
+    })
+
+};
+
+export const sortZa = () => (dispatch) => {
+  dispatch(
+    { 
+      type: 'SORT_ZA',
+      payload: 'ZA'
+  })
+
+};
+
+export const sortRatingUp = () => (dispatch) => {
+  dispatch (
+    {
+      type: 'RATING_UP',
+      payload: 'UP'
+    }
+  )
 }
+
+export const sortRatingDown = () => (dispatch) => {
+  dispatch (
+    {
+      type: 'RATING_DOWN',
+      payload: 'DOWN'
+    }
+  )
+}
+
+export const resetAll= () => (dispatch) => {
+  dispatch (
+    {
+      type: 'RESET',
+      payload: 'ALL'
+    }
+  )
+}
+
+
+
+
