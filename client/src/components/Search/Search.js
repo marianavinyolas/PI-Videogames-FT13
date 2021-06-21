@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import   { getVideogamesName }  from '../../actions/actions'
 
 const Search = () => {
   const [name, setName] = useState('');
   const dispatch = useDispatch();
-  // const games = useSelector(state => state.search);
+  // const games = useSelector(state => state.videogames);
   // console.log(name)
-  
+  useEffect(() => {
+    dispatch(getVideogamesName(name));
+}, [dispatch]);
+
   const handleChange = (e) => {
     setName( e.target.value );
   }
@@ -16,17 +19,16 @@ const Search = () => {
     e.preventDefault();
     // console.log('hahahahahahah')
     if(name.length) dispatch(getVideogamesName(name))
-    setName(''); // esto vacia la barra de busqueda
+    setName(''); 
   }
   return (
     <div>
-      <form className='container' onSubmit={(e)=>handleSubmit(e)}>
-          <input className='input--search' type='text'
+      <form onSubmit={(e)=>handleSubmit(e)}>
+          <input className='input' type='text'
             autoComplete='off' 
             value={name}
-            placeholder='Enter a name...'
+            placeholder='Search by name...'
             onChange={ e => handleChange(e)}/>
-        <button className='btn--search'  type='submit'>Search</button>
       </form>
     </div>
   );

@@ -1,82 +1,74 @@
+import { sortVideogamesAsc,
+        sortVideogamesDesc,
+        filterBySource,
+        filterByGenre,
+        interseccion,
+      } from '../utils/methods'
 
 const initialState = {
   videogames: [],
   backVideogames: [],
-  videogamesDetail: [],
-  search: [],
+  videogameGenres: [],
+  videogameSource:[],
+  videogameSearch: [],
+  videogameDetail: {},
   genres: [],
   sorted: 'ALL',
-
 };
 
-const sortVideogamesAsc = ( array, field) => {
-  array.sort((a, b) => {
-    if (a[field] > b[field]) {
-      return 1;
-    }
-    if (a[field] < b[field]) {
-      return -1;
-    }
-  return 0;
-})
-  return array;
-}
-
-const sortVideogamesDesc = ( array, field) => {
-  array.sort((a, b) => {
-    if (a[field] < b[field]) {
-      return 1;
-    }
-    if (a[field] > b[field]) {
-      return -1;
-    }
-    return 0;
-  })
-  return array;
-}
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_VIDEOGAMES': 
-    return {
-      ...state,
-      videogames: action.payload,
-      backVideogames: action.payload
-    };
+      return {
+        ...state,
+        videogames: action.payload,
+        backVideogames: action.payload,
+      };
     case 'RESET':
       return {
         ...state,
         videogames: state.backVideogames,
+        videogameGenres: [],
+        videogameSearch: [],
+        videogameDetail: {},
         sorted: action.payload
       }
-    case 'GET_VIDEOGAME_SEARCH': 
+    case 'GET_VIDEOGAME_SEARCH':   // data[]
+      let filter1 = interseccion(action.payload, state.videogames)
       return {
         ...state,
-        videogames: action.payload,
-        search: action.payload
+        videogameSearch: action.payload,
+        videogames: filter1,
+
       };
-    case 'GET_VIDEOGAME_DETAIL': 
+    case 'BY_GENRES':               // 'genre'
+      let filter= filterByGenre(action.payload, state.videogames)
       return {
         ...state,
-        videogamesDetail: action.payload
+        videogames: interseccion(filter, state.videogameSearch),
+        videogameGenres: filter,
+        // sorted: 'GENRES'  // revisar
       };
-    case 'GET_GENRES':
+    case 'BY_SOURCE':                // 'source'
+      let filter3 = filterBySource(action.payload, state.videogames)
       return {
         ...state,
-        genres: action.payload
+        videogames: interseccion(filter3, state.videogameSearch),
+        videogameSource:filter3
       };
     case 'SORT_AZ':
-        return {
-          ...state,
-          videogames: sortVideogamesAsc(state.videogames, 'name'),
-          sorted: action.payload
+      return {
+        ...state,
+        videogames: sortVideogamesAsc(state.videogames, 'name'),
+        sorted: action.payload
         }
     case 'SORT_ZA':
-        return {
-          ...state,
-          videogames: sortVideogamesDesc(state.videogames, 'name'),
-          sorted: action.payload
-          }
+      return {
+        ...state,
+        videogames: sortVideogamesDesc(state.videogames, 'name'),
+        sorted: action.payload
+        }
     case 'RATING_UP':
       return {
         ...state,
@@ -88,17 +80,20 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         videogames: sortVideogamesDesc(state.videogames, 'rating'),
         sorted: action.payload
-        }
-
-
-
-
-
+        };
+    case 'GET_VIDEOGAME_DETAIL': 
+      return {
+        ...state,
+        videogameDetail: action.payload
+      };
+    case 'GET_GENRES':
+      return {
+        ...state,
+        genres: action.payload
+      };
     default:
       return state;
   }
 };
 
-
-export default rootReducer
-
+export default rootReducer;

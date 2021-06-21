@@ -11,11 +11,11 @@ export const StyledDiv = styled.div`
   background-attachment: fixed;
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: 110%;
 
 
   .title {
-    font-size: 40px;
+    font-size: 35px;
     margin-left: 50px;
     margin-top: 80px;
   }
@@ -27,13 +27,13 @@ export const StyledDiv = styled.div`
     color: #3a0ca3;
     width: 300px;
     height: 60px;
-    margin-left: 220px;
+    margin-left: 190px;
     margin-bottom: 250px;
     font-size: 30px;
     font-weight: bold;
     :hover {
       background-color: #3a0ca3;
-      transition: 400ms;
+      transition: 300ms;
       color: #f2830d;
     }
     

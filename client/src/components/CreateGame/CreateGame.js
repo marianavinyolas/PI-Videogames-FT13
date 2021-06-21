@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -23,14 +23,14 @@ const validate = (input) => {
 
 const CreateGame = () => {
 
-  const [input, setInput] = React.useState({
+  const [input, setInput] = useState({
     name: '',
     description: '',
     released: '',
     rating: 0
   });
 
-  const [errors, setErrors] = React.useState({});
+  const [errors, setErrors] = useState({});
   const dispatch = useDispatch('aca tengo que poner mi action');
 
 

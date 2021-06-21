@@ -12,22 +12,18 @@ export const  Card = (props) => {
   } = props;
 
   return (
-    <>
+    
 
-      <Link to={`/videogame/${id}`}>
       <div className='contImg'>
-        <div>{name}</div>
-        <img src={img} alt=""/>
+        <div className='title'>{name}</div>
+        <Link className='img' to={`/videogame/${id}`}>
+          <img src={img} alt='Not found'/>
+        </Link>
         <ul>
-          {
-            genres && genres.map((g, i) => {
-              return <li key={i}>{g.name}</li>
-            } )
-          }
+          {genres && genres.map((g, i) => { return <li key={i}>{g.name}</li>})}
         </ul>
       </div>
-          </Link>
-    </>
+    
   )
 }
 

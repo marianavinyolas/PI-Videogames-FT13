@@ -14,7 +14,7 @@ const App = () => {
     <Fragment>
       <Route  path='/creategame' component={CreateGame}/>
       <Route exact path='/' component={LandingPage}/>
-      <Route path={['/home', '/videogame/:id', '/creategame']}>
+      <Route path={['/home', '/creategame']}>
         <Nav/>
       </Route>
       <Route  path='/home' component={Home}/>
