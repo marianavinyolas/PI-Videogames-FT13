@@ -31,6 +31,7 @@ export const StyledDiv = styled.div`
     margin-bottom: 250px;
     font-size: 30px;
     font-weight: bold;
+    cursor: pointer;
     :hover {
       background-color: #3a0ca3;
       transition: 300ms;
@@ -39,10 +40,3 @@ export const StyledDiv = styled.div`
     
   }
 `
-
-
-// export const StyledBtn = styled.btn`
-//     border: 1px solid #000;
-//     display: flex;
-    
-// `;
