@@ -14,7 +14,6 @@ export const  GameDetail = ({match}) => {
     dispatch(getVideogameDetail(id))
   }, [dispatch, id]);
 
-  // console.log(game)
   return (
     <StyledDiv>
       <CardDetail game = {game} />

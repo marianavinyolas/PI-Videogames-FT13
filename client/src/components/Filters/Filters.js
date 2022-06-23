@@ -5,7 +5,6 @@ import { useDispatch, useSelector} from 'react-redux';
 const Filters = () => {
   const dispatch = useDispatch();
   const genres = useSelector(state => state.genres)
-  const source = useSelector(state => state.videogameSource)
 
 
   useEffect(  ()=>dispatch(getGenres()), [dispatch] )

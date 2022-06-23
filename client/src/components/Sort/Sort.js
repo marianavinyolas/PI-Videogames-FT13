@@ -24,7 +24,6 @@ const Sort = () => {
                 <option value= 'SORT_ZA'>Z-A</option>
                 <option value= 'RATING_UP'>Rating up</option>
                 <option value= 'RATING_DOWN'>Rating down</option>
-                {/* <option value= 'ALL'>Show all</option> */}
             </select>
             <button className='btn--nav' onClick={(e)=>handleClick(e)}>Reset filters</button>
         </div>

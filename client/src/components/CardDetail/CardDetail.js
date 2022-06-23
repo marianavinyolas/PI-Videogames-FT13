@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 export const  CardDetail = ({game}) => {
-  console.log(game)
   return (
     <>
       <div className='contImg'>

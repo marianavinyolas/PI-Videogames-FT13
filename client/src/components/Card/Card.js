@@ -2,18 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 
-export const  Card = (props) => {
-
-  const {
-    name,
-    img,
-    genres,
-    id,
-  } = props;
+export const  Card = ({ name, img, genres, id }) => {
 
   return (
-    
-
       <div className='contImg'>
         <div className='title'>{name}</div>
         <Link className='img' to={`/videogame/${id}`}>
@@ -23,7 +14,6 @@ export const  Card = (props) => {
           {genres && genres.map((g, i) => { return <li key={i}>{g.name}</li>})}
         </ul>
       </div>
-    
   )
 }
 

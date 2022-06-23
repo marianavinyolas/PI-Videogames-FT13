@@ -5,8 +5,6 @@ import   { getVideogamesName }  from '../../actions/actions'
 const Search = () => {
   const [name, setName] = useState('');
   const dispatch = useDispatch();
-  // const games = useSelector(state => state.videogames);
-  // console.log(name)
   useEffect(() => {
     dispatch(getVideogamesName(name));
 }, [dispatch]);
@@ -17,7 +15,6 @@ const Search = () => {
   
   const handleSubmit =  (e) => {
     e.preventDefault();
-    // console.log('hahahahahahah')
     if(name.length) dispatch(getVideogamesName(name))
     setName(''); 
   }

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
-  /* display:inline; */
-  /* display:grid; */
   width: 75%;
   grid-template-columns:  1fr 1fr;
   margin: auto;
@@ -11,12 +9,7 @@ export const StyledDiv = styled.div`
   list-style-type: none;
   font-size: 16px;
   font-family: 'Antonio', sans-serif;
-    background-color: #000000;
-
-  /* width: 70%;
-  margin: auto;
-  font-size: 14px;
-  color: #e2711d; */
+  background-color: #000000;
   .contImg {
     display: flex;
     justify-content: center;
@@ -28,7 +21,6 @@ export const StyledDiv = styled.div`
     .btn {
       display:flex;
       background-color: #e2711d
-
     }
     img {
       width:300px;
